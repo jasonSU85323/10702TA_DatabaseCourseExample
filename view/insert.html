@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Employee Management System</title>
+    <mete charset="UTF-8">
+    <mete name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">    
+    <style type="text/css">
+        .a{
+            padding-top:60px; 
+        }
+        .b{
+            padding-top:10px; 
+            padding-left:30px;
+            padding-right:30px;
+        }
+    </style>    
+</head>
+
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">Employee Management System</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+                    <li><a href="/Inquire">Inquire</a></li>
+                    <li class="active"><a href="/insert">insert</a></li>
+                    <li><a href="/update">update</a></li>
+                    <li><a href="/delete">delete</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+      	</div>
+    </nav>
+    <center>
+        <div class="a">
+            <form class="form-inline" action="/insert" method="post">
+                <div class="form-group">
+                    <label for="exampleInputName2">Employee Name:</label>
+                    <input type="text" class="form-control" id="Ename" name="Ename">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName2">Department Name:</label>                
+                    <select class="form-control" id="Dname" name="Dname">
+                        <option>營業一課</option>
+                        <option>營業二課</option>
+                        <option>營業三課</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default">新增</button>
+            </form>
+        </div>
+        <div class="b">
+            <table class="table table-hover" id="content">
+            </table>
+        </div>        
+    </center>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.min.js"></script>
+</body>
+
+</html>

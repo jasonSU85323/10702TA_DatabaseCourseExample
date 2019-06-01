@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Employee Management System</title>
+    <mete charset="UTF-8">
+    <mete name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">    
+    <style type="text/css">
+        .a{
+            padding-top:60px; 
+        }
+        .b{
+            padding-top:30px; 
+            padding-left:30px;
+            padding-right:100px;
+        }
+    </style>    
+    <script>    
+        function test1(){
+            var Eid   = document.getElementById("Eid").value;
+            var Ename = document.getElementById("Ename").value;
+			$$.post(
+                '/update',
+                {
+                    "fun":"fun1",
+                    "Eid":Eid,
+                    "Ename":Ename
+                },
+                function(data){
+                    if (data != null) {
+                        // document.getElementById("tid").setAttribute("placeholder", data[0]);
+                        document.getElementById("tid").setAttribute("value", data[0]);
+                        // document.getElementById("tname").setAttribute("placeholder", data[1]);
+                        document.getElementById("tname").setAttribute("value", data[1]);
+                        $$('#trank option[value="' + data[2] + '"]').attr('selected', true);
+                        $$('#td option[value="' + data[3] + '"]').attr('selected', true);
+                        $$("#go").append(
+                            "<button type=\"button\" onclick=\"test2()\" class=\"btn btn-default\">修改</button>"
+                        );
+                    } else {
+                        alert("No such employee!!")
+                    }
+
+                }
+            );
+        }
+        function test2(){
+            var tid     = document.getElementById("tid").value;
+            var tname   = document.getElementById("tname").value;
+            var trank   = document.getElementById("trank").value;
+            var td      = document.getElementById("td").value;            
+			$$.post(
+                '/update',
+                {
+                    "fun":"fun2",
+                    "tid":tid,
+                    "tname":tname,
+                    "trank":trank,
+                    "td":td
+                },
+                function(data){
+                    window.alert(data);
+                    window.location.href='/';
+                }
+            );
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">Employee Management System</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+                    <li><a href="/Inquire">Inquire</a></li>
+                    <li><a href="/insert">insert</a></li>
+                    <li class="active"><a href="/update">update</a></li>
+                    <li><a href="/delete">delete</a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+      	</div>
+    </nav>
+    <center>
+        <div class="a">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="exampleInputName2">Employee ID:</label>
+                    <input type="text" class="form-control" id="Eid">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName2">Employee Name:</label>                
+                    <input type="text" class="form-control" id="Ename">
+                </div>
+                <button type="button" onclick="test1()" class="btn btn-default">搜尋</button>
+            </form>
+        </div>
+        <div class="b">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Employee ID</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="tid" name="tid" placeholder="" value="" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Employee Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="tname" name="tname" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Rank</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="trank" name="trank">
+                            <option value="員工">員工</option>
+                            <option value="主管">主管</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Department Name</label>
+                    <div class="col-sm-10"> 
+                        <select class="form-control" id="td" name="td">
+                            <option value="營業一課">營業一課</option>
+                            <option value="營業二課">營業二課</option>
+                            <option value="營業三課">營業三課</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10" id="go">
+                        
+                    </div>
+                </div>                                               
+            </form>
+        </div>
+    </center>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.min.js"></script>
+</body>
+
+</html>

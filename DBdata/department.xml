@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<RECORDS>
+<RECORD>
+<d_id>aaa</d_id>
+<name>營業一課</name>
+<e_id>1111</e_id>
+</RECORD>
+<RECORD>
+<d_id>bbb</d_id>
+<name>營業二課</name>
+<e_id>4444</e_id>
+</RECORD>
+<RECORD>
+<d_id>ccc</d_id>
+<name>營業三課</name>
+<e_id>7777</e_id>
+</RECORD>
+</RECORDS>
